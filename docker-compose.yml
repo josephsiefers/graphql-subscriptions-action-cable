@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  react-app:
+    container_name: react-app
+    command: "./start.sh"
+    build: ./
+    image: joineryhousing/react-app
+    volumes:
+      - ./:/home/node
+      - type: bind
+        source: ./node_modules
+        target: /tmp/node_modules
+        consistency: delagated
+    ports:
+      - "127.0.0.1:3001:3000"
